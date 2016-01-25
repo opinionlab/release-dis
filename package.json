@@ -8,7 +8,7 @@
     "url": "git+https://github.com/tatums/release-dis.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/jasmine/bin/jasmine.js"
   },
   "author": "",
   "license": "ISC",

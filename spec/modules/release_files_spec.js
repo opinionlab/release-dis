@@ -23,8 +23,8 @@ describe("get", function(){
     ]
     expect(r.go(files)).toEqual(
       [
-        { version: '0.0.8', files: [ '0.0.8/index.js', '0.0.8/modules/stuff.js', ] },
-        { version: '0.0.7', files: [ '0.0.7/index.js', '0.0.7/modules/foo.js', ] }
+        { version: '0.0.8', files: [ {Key: 'release/0.0.8/index.js'}, {Key: 'release/0.0.8/modules/stuff.js'} ] },
+        { version: '0.0.7', files: [ {Key: 'release/0.0.7/index.js'}, {Key: 'release/0.0.7/modules/foo.js'} ] }
       ]
     );
   });
