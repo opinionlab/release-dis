@@ -16,10 +16,10 @@ describe("get", function(){
   it("does", function(){
     var files = [
       { Key: 'index.html'},
-      { Key: '0.0.8/index.js'},
-      { Key: '0.0.8/modules/stuff.js'},
-      { Key: '0.0.7/index.js'},
-      { Key: '0.0.7/modules/foo.js'},
+      { Key: 'release/0.0.8/index.js'},
+      { Key: 'release/0.0.8/modules/stuff.js'},
+      { Key: 'release/0.0.7/index.js'},
+      { Key: 'release/0.0.7/modules/foo.js'},
     ]
     expect(r.go(files)).toEqual(
       [

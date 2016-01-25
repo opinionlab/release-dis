@@ -16,11 +16,21 @@ function fetch (version, items) {
   return foundItem
 }
 
+function includesFn (item, items) {
+  var returnVal = false
+  items.forEach(function(i){
+    if (i == item) {
+      returnVal = true;
+    }
+  });
+  return returnVal;
+};
+
 exports.go = function (files) {
   var items = [];
   files.map(function(file){
-    var version = file.Key.split('/')[0];
-    if (version != 'index.html') {
+    var version = file.Key.split('/')[1];
+    if ( !includesFn(file.Key, ['index.html', 'c/', 'releases/']) ) {
       var item = fetch (version, items);
       if (item != undefined)
         { item.files.push(file); }
