@@ -65,7 +65,7 @@ exports.buildPage = function (files){
   var params = {
     ACL: 'public-read',
     ContentType: "text/html",
-    Key: 'index.html',
+    Key: 'releases/' + 'index.html',
     Body: output
   };
   s3.upload(params, function(err, data) {

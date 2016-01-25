@@ -7,10 +7,10 @@
 
 ## Usage
 
-You **must** create a file config/release.json
+You **must** create a file anywhere named `release.config.js`
 
 
-For example
+For example,
 ```javascript
 {
   "bucket": "release-dis",
