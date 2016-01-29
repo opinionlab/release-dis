@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 var colors = require('colors');
 var argv = require('yargs')
 .demand(['version'])
@@ -17,11 +18,11 @@ var promise = release.publish(argv.version);
 promise.then(function (publishedFiles) {
   return release.getBucketListing();
 }).then(function (files){
-  //build and upload the index page
-  release.buildPage(files);
+  return release.buildPage(files);
+}).then(function (obj){
   console.log(
-    colors.green(argv.version + ' has been released!')
-  )
+    colors.green('\n' + argv.version + ' has been released! ==>'), colors.cyan(obj.Location), '\n'
+  );
 }).catch(function (err){
   console.log(err.name.red, err.message.red);
 })

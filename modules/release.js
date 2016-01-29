@@ -49,6 +49,7 @@ exports.publish = function (version) {
   });
 }
 
+
 exports.getBucketListing = function () {
   return new Promise(function (resolve, reject){
     s3.listObjects({}, function (err, data) {
@@ -68,7 +69,10 @@ exports.buildPage = function (files){
     Key: 'index.html',
     Body: output
   };
-  s3.upload(params, function(err, data) {
-    if (err) throw err;
+  return new Promise(function (resolve, reject){
+    s3.upload(params, function(err, data) {
+      if (err) return reject(err);
+      else resolve(data);
+    });
   });
 }
