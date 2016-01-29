@@ -9,6 +9,7 @@ var releaseFiles  = require(__dirname + '/release_files.js');
 
 var customTemplate = fs.readFileSync(config.get('release_template'), 'utf-8')
 var template = customTemplate || fs.readFileSync(__dirname + '/template.html','utf8');
+var destination_path = config.get('destination_path')
 
 AWS.config.update({
   accessKeyId: config.get('aws_access_key_id'),
@@ -25,12 +26,11 @@ var s3 = new AWS.S3(
   }
 );
 
-
 var uploadFn = function (item, cb) {
   var params = {
     ACL: 'public-read',
     ContentType: mime.lookup(item.path),
-    Key: 'releases/' + item.version + '/' + item.path,
+    Key: [destination_path, item.version, item.path].join('/'),
     Body: fs.readFileSync(item.path)
   };
   s3.upload(params, function(err, data) {

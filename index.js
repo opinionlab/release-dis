@@ -2,8 +2,8 @@
 
 var colors = require('colors');
 var argv = require('yargs')
-.demand(['version'])
-.argv;
+  .demand(['version'])
+  .argv;
 
 var git = require(__dirname + '/modules/git.js');
 var release = require(__dirname + '/modules/release.js');
