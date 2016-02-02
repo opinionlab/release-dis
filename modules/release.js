@@ -61,7 +61,8 @@ exports.getBucketListing = function () {
 
 
 exports.buildPage = function (files){
-  var releases = releaseFiles.go(files);
+  var filteredFiles = releaseFiles.filter(files, 'release')
+  var releases = releaseFiles.go(filteredFiles);
   var output = Mustache.render(template, {releases: releases});
   var params = {
     ACL: 'public-read',

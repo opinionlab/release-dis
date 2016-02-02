@@ -28,5 +28,24 @@ describe("get", function(){
       ]
     );
   });
+  it("goes", function(){
+
+    var files = [
+      { Key: 'index.html'},
+      { Key: 'release/0.0.8/index.js'},
+      { Key: 'release/0.0.8/modules/stuff.js'},
+      { Key: 'release/0.0.7/index.js'},
+      { Key: 'release/0.0.7/modules/foo.js'},
+      { Key: 'c/walmart/foo.js'},
+    ]
+    expect(r.matching(files, 'release')).toEqual(
+      [
+        { Key: 'release/0.0.8/index.js'},
+        { Key: 'release/0.0.8/modules/stuff.js'},
+        { Key: 'release/0.0.7/index.js'},
+        { Key: 'release/0.0.7/modules/foo.js'}
+      ]
+    )
+  })
 });
 

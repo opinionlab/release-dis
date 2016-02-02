@@ -26,6 +26,18 @@ function includesFn (item, items) {
   return returnVal;
 };
 
+exports.filter = function (files, string) {
+  var length = string.length;
+  var val = [];
+
+  files.forEach(function(file){
+    if (file.Key.slice(0, length) == string) {
+      val.push(file);
+    }
+  })
+  return val
+};
+
 exports.go = function (files) {
   var items = [];
   files.map(function(file){
